@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 rounded-3xl w-full h-12 flex justify-between px-5">
+  <div class="bg-gray-300 rounded-3xl h-12 flex justify-between px-5">
     <input type="text" class="bg-transparent focus:outline-none w-full" placeholder="Busque por uma ferramenta"/>
         <svg
           xmlns="http://www.w3.org/2000/svg"
