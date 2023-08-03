@@ -3,10 +3,10 @@
     class="bg-gray-300 grid sm:grid-cols-1 md:grid-cols-4 grid-flow-row gap-5 p-5"
   >
     <div v-for="panel in panels" :key="panel.name" class="my-auto h-full">
-      <div class="w-full p-5 main-font">
+      <router-link class="w-full p-5 main-font" :to="panel.path">
         {{ panel.name }}
         <img :src="panel.image" alt="">
-      </div>
+      </router-link>
     </div>
   </div>
 </template> 

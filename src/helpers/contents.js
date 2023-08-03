@@ -1,4 +1,7 @@
 import Home from '../pages/Home.vue';
+import Prevision from '../pages/Prevision.vue';
+import Costs from '../pages/Costs.vue';
+import Budget from '../pages/Budget.vue';
 import homeImg from '../assets/215112.png'
 const contents = [
   {
@@ -9,23 +12,23 @@ const contents = [
     image: homeImg
   },
   {
-    path: "/",
+    path: "/budget",
     name: "Orçamento",
-    component: Home,
+    component: Budget,
     panel: true,
     image: homeImg
   },
   {
-    path: "/",
+    path: "/costs",
     name: "Custos",
-    component: Home,
+    component: Costs,
     panel: true,
     image: homeImg
   },
   {
-    path: "/",
+    path: "/prevision",
     name: "Previsões",
-    component: Home,
+    component: Prevision,
     panel: true,
     image: homeImg
   }
