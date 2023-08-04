@@ -4,7 +4,12 @@ export default {
   darkMode: false,
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        '1/20': '5%',
+        '19/20': '95%',
+      }
+    },
   },
   plugins: [],
 }

@@ -2,7 +2,10 @@
 </script>
 
 <template>
-  <router-view class=" h-full w-full" />
+  <div class=" h-full w-full">
+    <div class="h-1/20 ">Logo</div>
+    <router-view class=" h-19/20 w-full" />
+  </div>
 </template>
 
 <style>
