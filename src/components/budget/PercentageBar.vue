@@ -10,7 +10,7 @@
       max="100"
       :value="modelValue.value"
       @input="props.modelValue.value = Number($event.target.value)"
-      @change="$emit('onChange', modelValue.name)"
+      @change="$emit('onChange', modelValue)"
     />
     {{ modelValue.value }}%
   </div>

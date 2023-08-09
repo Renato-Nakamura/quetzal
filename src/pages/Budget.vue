@@ -48,27 +48,23 @@ let chartOptions = ref({
   labels: standardCategories,
 });
 
-function onChange(name) {
-  console.log(name);
-  let percentageUsed = 0;
-  categories = categories.value.map((cat) => {
-    if (name == cat.name) {
-      percentageUsed += cat.value;
+function onChange(item) {
+  //separar nova fração
+  const changedValue = item.value;
+
+  //pegar fracao de cada um
+
+  let total = 0;
+  adjustedCategories.forEach((cat) => {
+    if (cat.name !== item.name) total += cat.value;
+  });
+  //fracao antiga restante pela que sobrou da nova
+  categories.value = categories.value.map((cat) => {
+    if (item.name == cat.name) {
       return cat;
     }
-    cat.value = (
-      (cat.value /
-        adjustedCategories
-          .map((cat) => cat.value)
-          .reduce(
-            (accumulator, currentValue) => accumulator + currentValue,
-            0
-          )) *
-      (100 - percentageUsed)
-    ).toFixed(2);
-    percentageUsed += cat.value;
-
-    console.log(cat);
+    const newValue = (cat.value / total) * (100 - changedValue);
+    cat.value = Math.round(newValue * 100) / 100;
 
     return cat;
   });
