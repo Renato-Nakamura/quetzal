@@ -9,7 +9,10 @@
       min="1"
       max="100"
       :value="modelValue.value"
-      @input="props.modelValue.value = Number($event.target.value)"
+      @input="
+        props.modelValue.value = Number($event.target.value);
+        props.modelValue.changed = true;
+      "
       @change="$emit('onChange', modelValue)"
     />
     {{ modelValue.value }}%

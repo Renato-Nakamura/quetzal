@@ -34,6 +34,7 @@ const adjustedCategories = standardCategories.map((cat) => {
   const obj = {};
   obj.value = 100 / standardCategories.length;
   obj.name = cat;
+  obj.changed = false;
   return obj;
 });
 
@@ -50,20 +51,39 @@ let chartOptions = ref({
 
 function onChange(item) {
   //separar nova fração
-  const changedValue = item.value;
+  let changedValue = 0;
 
   //pegar fracao de cada um
 
   let total = 0;
+  // let clearChange =adjustedCategories.every(cat=> cat.changed)
+
   adjustedCategories.forEach((cat) => {
-    if (cat.name !== item.name) total += cat.value;
+    if (!cat.changed) {
+      total += cat.value;
+    } else {
+      changedValue += cat.value;
+    }
   });
+
   //fracao antiga restante pela que sobrou da nova
   categories.value = categories.value.map((cat) => {
-    if (item.name == cat.name) {
+    console.log(cat);
+    // if(clearChange) cat.changed = false
+    if (cat.changed) {
+      if (cat.name == item.name && changedValue > 100) {
+        cat.value = cat.value - (changedValue - 100);
+      }
       return cat;
     }
-    const newValue = (cat.value / total) * (100 - changedValue);
+    console.log(changedValue, cat.value, total);
+
+    let newValue =
+      changedValue < 100
+        ? (cat.value / (total || 1) || 1) * (100 - changedValue)
+        : 0;
+    console.log(newValue);
+
     cat.value = Math.round(newValue * 100) / 100;
 
     return cat;
